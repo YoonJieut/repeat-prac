@@ -1,0 +1,64 @@
+var Calculator = /** @class */ (function () {
+    function Calculator(a, b) {
+        this._a = a;
+        this._b = b;
+    }
+    Object.defineProperty(Calculator.prototype, "a", {
+        //getter 와 setter
+        get: function () {
+            return this._a;
+        },
+        set: function (value) {
+            this._a = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Calculator.prototype, "b", {
+        get: function () {
+            return this._b;
+        },
+        set: function (value) {
+            this._b = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    // method settings
+    Calculator.prototype.add = function () {
+        return this._a + this._b;
+    };
+    Calculator.prototype.subtract = function () {
+        return this._a - this._b;
+    };
+    Calculator.prototype.multiply = function () {
+        return this._a * this._b;
+    };
+    Calculator.prototype.divide = function () {
+        if (this._b === 0) {
+            throw new Error("0으로 나눌 수 없습니다.");
+        }
+        return this._a / this._b;
+    };
+    //static method
+    // ? static 은 무슨 뜻일까? 밖에서도 부를 수 있나 없나의 차이일까?
+    Calculator.addStatic = function (a, b) {
+        return a + b;
+    };
+    Calculator.subtractStatic = function (a, b) {
+        return a - b;
+    };
+    Calculator.multiplyStatic = function (a, b) {
+        return a * b;
+    };
+    Calculator.divideStatic = function (a, b) {
+        if (b === 0) {
+            throw new Error("0은 나눌 수 없습니다.");
+        }
+        return a / b;
+    };
+    return Calculator;
+}());
+// 사용 예
+var calc = new Calculator(10, 5);
+console.dir(Calculator);
